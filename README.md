@@ -16,7 +16,7 @@ Built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS**, and **
   4. **Professional Experience**: Chronological career timeline:
      - **British Council — Egypt**: Teaching Center Assistant (June 2025 – Present).
      - **Freelance Developer**: Cybersecurity & Software Developer (2023 – Present).
-     - **Cloudzlab**: Salesforce Intern (July 2024) featuring dedicated **Training Areas** (Salesforce Platform, Data Modeling, Lightning Customization, Data Management, Mobile App, User Engagement, Reports & Dashboards).
+     - **Cloudzlab**: Salesforce Intern (July 2026) featuring dedicated **Training Areas** (Salesforce Platform, Data Modeling, Lightning Customization, Data Management, Mobile App, User Engagement, Reports & Dashboards).
   5. **Featured Projects**: Filterable project gallery with modal inspection and 100% authentic project assets:
      - **IoT Garden & Automated Ticketing System (Smart Park)**: Physical Arduino Uno hardware prototype, environmental sensors, servo gate barriers, WebSocket live telemetry matrix, optical QR ticket scanner, Cirkit Designer breadboard schematics, and cybersecurity audit logs.
      - **Velora Travel Platform**: Digital travel platform with physical NFC keychain and interactive QR desk stand touchpoints.

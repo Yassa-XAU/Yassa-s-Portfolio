@@ -52,7 +52,7 @@ export const experiences: ExperienceItem[] = [
     role: "Salesforce Intern",
     organization: "Cloudzlab",
     location: "Cairo, Egypt",
-    period: "July 2024",
+    period: "July 2026",
     isCurrent: false,
     type: "Internship",
     description:
