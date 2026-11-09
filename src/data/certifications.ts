@@ -59,3 +59,4 @@ export const certifications: CertificationItem[] = [
     skills: ["Discipline", "Goal Setting", "Wellness Coaching"],
   },
 ];
+

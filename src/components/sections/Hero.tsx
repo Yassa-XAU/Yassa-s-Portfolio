@@ -172,8 +172,8 @@ export function Hero() {
                     className="object-cover object-top filter contrast-[1.03] transition-all duration-500 hover:scale-[1.02]"
                   />
 
-                  {/* Gradient lighting overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80" />
+                  {/* Subtle gradient lighting overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40 pointer-events-none" />
 
                   {/* High-tech bottom banner */}
                   <div className="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-card/90 border border-border/90 backdrop-blur-md flex items-center justify-between">
@@ -198,3 +198,4 @@ export function Hero() {
     </section>
   );
 }
+

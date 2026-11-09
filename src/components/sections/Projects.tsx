@@ -75,7 +75,7 @@ export function Projects() {
                       sizes="(max-width: 1024px) 100vw, 400px"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/30 to-transparent opacity-90 group-hover:opacity-60 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent opacity-30 group-hover:opacity-10 transition-opacity" />
 
                     {/* Status badge & category overlay */}
                     <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
@@ -181,3 +181,4 @@ export function Projects() {
     </section>
   );
 }
+

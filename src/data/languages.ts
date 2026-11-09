@@ -25,3 +25,4 @@ export const languages: LanguageItem[] = [
     description: "Professional working proficiency; verified by the American University in Cairo (AUC).",
   },
 ];
+

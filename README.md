@@ -2,37 +2,44 @@
 
 A modern, high-performance personal technology portfolio for **Yassa Ashraf Albir**, Computer Science Graduate specializing in Cyber Security.
 
-Built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **Neon Serverless PostgreSQL** with **Drizzle ORM**.
+Built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**. Designed for zero-dependency static deployment on **Vercel** with maximum performance, instant page loads, and verified professional assets.
 
 ---
 
 ## 🚀 Key Features & Highlights
 
-- **Aesthetic**: Premium futuristic dark theme (`#080D16`) with electric blue accents (`#1677FF`), glassmorphism cards, and subtle grid patterns.
+- **Aesthetic**: Premium futuristic dark theme (`#080D16`) with electric blue accents (`#1677FF`), glassmorphism cards, subtle grid patterns, and accessible typography.
 - **Section Architecture**:
-  1. **Hero**: Large bold typography, headline, verified portrait frame with glow effects, primary and secondary CTAs, and active status indicator.
+  1. **Hero**: Bold typography, professional headline, verified portrait frame with electric-blue glow, primary CTA ("Explore My Work"), secondary CTA ("Download My CV"), and direct professional links.
   2. **Professional Identity**: "Technology Meets Problem Solving" — 4 core disciplines (Cybersecurity, Software Development, IT Operations, Data Analytics).
-  3. **About Me**: Verified background at Sadat Academy for Management Sciences (2022–2026), British Council, and software engineering.
-  4. **Professional Experience**: Interactive career timeline featuring British Council, freelance Python/MySQL development, and pending internship milestones.
-  5. **Featured Projects**: Filterable project gallery with interactive modal inspection:
-     - **Smart Park**: University graduation IoT garden and ticketing platform with hardware/software integration.
-     - **Velora**: Travel agency platform with responsive UI and relational database structure.
-     - **Data Analysis Academic Collection**: Phishing email detection comparative benchmark (PySpark vs Orange Data Mining).
+  3. **About Me**: Academic background at Sadat Academy for Management Sciences (2022–2026), British Council operations, and software development foundations.
+  4. **Professional Experience**: Chronological career timeline:
+     - **British Council — Egypt**: Teaching Center Assistant (June 2025 – Present).
+     - **Freelance Developer**: Cybersecurity & Software Developer (2023 – Present).
+     - **Cloudzlab**: Salesforce Intern (July 2024) featuring dedicated **Training Areas** (Salesforce Platform, Data Modeling, Lightning Customization, Data Management, Mobile App, User Engagement, Reports & Dashboards).
+  5. **Featured Projects**: Filterable project gallery with modal inspection and 100% authentic project assets:
+     - **IoT Garden & Automated Ticketing System (Smart Park)**: Physical Arduino Uno hardware prototype, environmental sensors, servo gate barriers, WebSocket live telemetry matrix, optical QR ticket scanner, Cirkit Designer breadboard schematics, and cybersecurity audit logs.
+     - **Velora Travel Platform**: Digital travel platform with physical NFC keychain and interactive QR desk stand touchpoints.
+     - **Data Analysis Academic Research**: Comparative machine learning benchmark (Orange Data Mining vs Apache PySpark) evaluating 5 classifiers with model comparison matrices, ROC curves, Random Forest confusion matrices, and university presentation defense media.
   6. **Technical Skills**: Categorized capability cards without fabricated proficiency percentages.
   7. **Education**: Bachelor of Science in Computer Science (Major: Cyber Security) from Sadat Academy for Management Sciences.
   8. **Certifications**: AMIT Cybersecurity SOC Diploma (Grade: 92%), AUC English B2, ISSA CPT, Huawei HCIA.
   9. **Languages**: Arabic (Native), English (B2 Professional).
-  10. **Contact Form**: Secure, working serverless contact form with Zod validation, rate limiting, honeypot spam protection, and Neon PostgreSQL persistence.
+  10. **Let's Connect**: Clean, modern direct-communication section with 4 interactive cards:
+      - **Direct Email**: `yassa.ashraf7890@gmail.com` (mailto link)
+      - **LinkedIn**: `linkedin.com/in/yassa-ashraf` (secure external tab)
+      - **GitHub**: `github.com/yassaashraf` (secure external tab)
+      - **Location**: Cairo, Egypt (Local & Remote availability)
+      - **Closing CTA**: *"Let's build something meaningful together."*
 
 ---
 
-## 🔒 Security & Privacy Engineering
+## 🔒 Security & Privacy Standards
 
-- **Parameterization**: All database transactions use Drizzle ORM parameterized queries.
-- **Rate Limiting**: Sliding window rate limiter protects the API against spam and abuse.
-- **Honeypot Protection**: Hidden fields trap automated bot submissions.
-- **Secret Isolation**: No database credentials or email tokens are ever exposed to the client bundle.
-- **Zero Trading Disclosures**: In strict compliance with privacy requirements, no personal trading activities, accounts, or automated financial strategies appear anywhere in the codebase or presentation layer.
+- **Static Zero-Database Architecture**: Eliminates attack surfaces, SQL injection risks, and third-party database downtime by serving static optimized bundles via Vercel Edge CDN.
+- **Privacy First**: No personal phone numbers, private home addresses, or confidential tokens are exposed.
+- **Strict Financial Privacy**: In full accordance with professional portfolio standards, zero personal trading accounts, trading strategies, or financial market activities are included.
+- **Content Security**: All external links are secured with `rel="noopener noreferrer"`.
 
 ---
 
@@ -43,30 +50,24 @@ Built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **Neo
 - **Styling**: Tailwind CSS
 - **Icons**: Lucide React
 - **Animations**: Framer Motion
-- **Database**: Neon Serverless PostgreSQL
-- **ORM**: Drizzle ORM (`drizzle-orm/neon-http`)
-- **Driver**: `@neondatabase/serverless`
-- **Validation**: Zod
-- **Notifications**: Resend (Optional)
-- **Deployment**: Vercel
+- **Hosting & CDN**: Vercel Serverless Edge
+- **Source Control**: GitHub (`https://github.com/Yassa-XAU/Yassa-s-Portfolio.git`)
 
 ---
 
 ## 📦 Project Structure
 
 ```
-├── docs/
-│   └── DATABASE_SETUP.md          # Comprehensive Neon & Drizzle setup guide
-├── drizzle/
-│   └── 0000_orange_grandmaster.sql # Auto-generated PostgreSQL migration
 ├── public/
-│   ├── certificates/              # Verified diplomas & certificates
+│   ├── certificates/              # Verified diplomas & certifications
 │   ├── documents/                 # CV download file (PDF)
 │   ├── images/                    # Professional portrait
-│   └── projects/                  # Project screenshots & diagrams
+│   └── projects/
+│       ├── data-mining/           # Orange workflows, ROC curves, confusion matrices
+│       ├── smart-park/            # Hardware prototype, telemetry, scanner, schematics
+│       └── velora/                # NFC desk stand, keychain, brand logo
 ├── src/
 │   ├── app/
-│   │   ├── api/contact/route.ts   # Secure contact form API endpoint
 │   │   ├── globals.css            # Electric blue theme & custom scrollbars
 │   │   ├── layout.tsx             # Root layout with SEO and OpenGraph
 │   │   ├── page.tsx               # Single-page portfolio application
@@ -77,60 +78,35 @@ Built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **Neo
 │   │   ├── sections/              # 10 modular sections
 │   │   └── ui/                    # Button, Card, Badge, SectionHeading, ProjectModal
 │   ├── data/                      # Clean structured TypeScript data files
-│   ├── db/
-│   │   ├── index.ts               # Lazy Neon HTTP database connection
-│   │   └── schema.ts              # Drizzle PostgreSQL table schema
-│   └── lib/                       # Zod validation schema & rate limiter
-├── drizzle.config.ts              # Drizzle Kit configuration
-├── next.config.ts                 # Next.js configuration
-├── package.json
-├── tailwind.config.ts             # Electric blue custom color palette
-└── tsconfig.json
+│   └── lib/                       # Utility functions
 ```
 
 ---
 
-## 💻 Local Development Setup
+## 💻 Local Development
 
-1. Clone or navigate to the repository directory:
-   ```bash
-   cd "My Portfolio"
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Configure environment variables:
-   ```bash
-   cp .env.example .env.local
-   ```
-   *(Refer to `docs/DATABASE_SETUP.md` for connection string details).*
-
-4. Run the development server:
+2. Start the local development server:
    ```bash
    npm run dev
    ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
----
-
-## 📜 Available NPM Scripts
-
-- `npm run dev`: Starts the Next.js local development server.
-- `npm run build`: Builds the production application for deployment.
-- `npm run start`: Starts the Next.js production server.
-- `npm run lint`: Runs ESLint checks.
-- `npm run db:generate`: Generates SQL migration files using Drizzle Kit.
-- `npm run db:push`: Pushes schema definitions directly to the database.
-- `npm run db:studio`: Launches Drizzle Studio in browser for inspecting data.
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
 ## 🚀 Deployment to Vercel
 
-1. Push this repository to GitHub.
-2. Import the repository into your [Vercel Dashboard](https://vercel.com).
-3. Connect the **Neon** integration via Vercel Marketplace (or set `DATABASE_URL` in Project Settings).
-4. Deploy! Vercel will automatically build and publish the website.
+The application is pre-configured for automatic deployment on Vercel:
+
+1. Push your changes to GitHub:
+   ```bash
+   git push origin main
+   ```
+2. Import the repository in [Vercel](https://vercel.com).
+3. Framework Preset: **Next.js** (auto-detected).
+4. Click **Deploy**. No external database provisioning or API keys required.

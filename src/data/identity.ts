@@ -50,3 +50,4 @@ export const identityPillars: IdentityPillar[] = [
     gradient: "from-blue-700/20 via-sky-500/10 to-transparent",
   },
 ];
+

@@ -5,9 +5,9 @@ export interface ExperienceItem {
   location: string;
   period: string;
   isCurrent: boolean;
-  isPending?: boolean;
-  statusText?: string;
   type: "Part-Time" | "Freelance" | "Internship";
+  description?: string;
+  trainingAreas?: string[];
   responsibilities: string[];
   skills: string[];
 }
@@ -49,18 +49,37 @@ export const experiences: ExperienceItem[] = [
   },
   {
     id: "cloudzlab-salesforce",
-    role: "Salesforce Track Intern",
+    role: "Salesforce Intern",
     organization: "Cloudzlab",
-    location: "Egypt",
-    period: "Upcoming / Pending Verification",
+    location: "Cairo, Egypt",
+    period: "July 2024",
     isCurrent: false,
-    isPending: true,
-    statusText: "Details Pending Final Verification",
     type: "Internship",
-    responsibilities: [
-      "Engagement in enterprise Salesforce ecosystem, CRM customization, and cloud administration principles.",
-      "Verified responsibilities, certification milestones, and program achievements will be published once officially confirmed.",
+    description:
+      "Participated in a Salesforce-focused internship, developing familiarity with the Salesforce ecosystem, CRM concepts, platform administration and Lightning Experience through guided learning and practical training.",
+    trainingAreas: [
+      "Salesforce Platform Fundamentals",
+      "Data Modeling",
+      "Lightning Experience Customization",
+      "Data Management",
+      "Salesforce Mobile App",
+      "User Engagement",
+      "Reports and Dashboards",
     ],
-    skills: ["Salesforce CRM", "Cloud Architecture", "CRM Customization"],
+    responsibilities: [
+      "Completed hands-on guided modules across core Salesforce CRM administration and data architecture principles.",
+      "Built custom data models using standard and custom objects, fields, and relational lookups.",
+      "Configured Lightning record pages, page layouts, and user interface components to match operational requirements.",
+      "Implemented data validation rules, security access controls, and object-level permissions.",
+      "Generated structured reports and analytical dashboards to track CRM key performance indicators.",
+    ],
+    skills: [
+      "Salesforce Platform",
+      "Data Modeling",
+      "Lightning Experience",
+      "CRM Administration",
+      "Reports & Dashboards",
+      "Data Management",
+    ],
   },
 ];

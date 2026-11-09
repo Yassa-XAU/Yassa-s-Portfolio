@@ -14,3 +14,4 @@ export const navItems: NavItem[] = [
   { label: "Certifications", href: "#certifications", number: "07" },
   { label: "Contact", href: "#contact", number: "08" },
 ];
+

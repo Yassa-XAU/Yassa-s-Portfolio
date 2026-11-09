@@ -1,376 +1,181 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { profileData } from "@/data/profile";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Card } from "../ui/Card";
 import { Button } from "../ui/Button";
-import { contactFormSchema, ContactFormData } from "@/lib/validation";
 import {
   Mail,
   Linkedin,
   Github,
   MapPin,
-  Send,
-  CheckCircle2,
-  AlertCircle,
-  Clock,
+  ExternalLink,
+  ArrowUpRight,
   Sparkles,
 } from "lucide-react";
 
 export function Contact() {
-  const [formData, setFormData] = useState<ContactFormData>({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-    website: "", // honeypot
-  });
-
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
-  const [statusMessage, setStatusMessage] = useState("");
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) {
-      setErrors((prev) => {
-        const next = { ...prev };
-        delete next[name];
-        return next;
-      });
-    }
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitStatus("idle");
-    setErrors({});
-
-    // Client-side validation using Zod
-    const clientValidation = contactFormSchema.safeParse(formData);
-    if (!clientValidation.success) {
-      const fieldErrors: Record<string, string> = {};
-      clientValidation.error.errors.forEach((err) => {
-        if (err.path[0]) {
-          fieldErrors[err.path[0].toString()] = err.message;
-        }
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-
-    setIsLoading(true);
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setSubmitStatus("success");
-        setStatusMessage(
-          data.message || "Thank you! Your message has been received."
-        );
-        setFormData({
-          name: "",
-          email: "",
-          subject: "",
-          message: "",
-          website: "",
-        });
-      } else {
-        setSubmitStatus("error");
-        setStatusMessage(
-          data.error || "Unable to send message. Please check the fields and try again."
-        );
-        if (data.details) {
-          const serverErrors: Record<string, string> = {};
-          for (const key of Object.keys(data.details)) {
-            if (Array.isArray(data.details[key])) {
-              serverErrors[key] = data.details[key][0];
-            }
-          }
-          setErrors(serverErrors);
-        }
-      }
-    } catch (err) {
-      setSubmitStatus("error");
-      setStatusMessage("Network error occurred. Please try again or email directly.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const contactCards = [
+    {
+      id: "email",
+      label: "Direct Email",
+      value: profileData.email,
+      description: "Fastest way to reach me for inquiries & opportunities",
+      icon: Mail,
+      href: `mailto:${profileData.email}`,
+      isExternal: false,
+      ctaText: "Send Email",
+    },
+    {
+      id: "linkedin",
+      label: "LinkedIn",
+      value: "linkedin.com/in/yassa-ashraf",
+      description: "Connect for professional networking & career discussions",
+      icon: Linkedin,
+      href: profileData.socials.linkedin,
+      isExternal: true,
+      ctaText: "View Profile",
+    },
+    {
+      id: "github",
+      label: "GitHub",
+      value: "github.com/yassaashraf",
+      description: "Explore my source code, repositories & technical experiments",
+      icon: Github,
+      href: profileData.socials.github,
+      isExternal: true,
+      ctaText: "Explore Repos",
+    },
+    {
+      id: "location",
+      label: "Location",
+      value: profileData.location,
+      description: "Available for on-site roles in Cairo & remote opportunities",
+      icon: MapPin,
+      href: null,
+      isExternal: false,
+      ctaText: "Cairo, Egypt",
+    },
+  ];
 
   return (
     <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 relative bg-background">
-      <div className="max-w-7xl mx-auto">
+      {/* Background ambient lighting */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-accent-primary/5 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <SectionHeading
           number="10"
-          subtitle="Initiate Dialogue"
-          title="Get In Touch"
-          description="Whether you have an inquiry regarding technical roles, engineering collaboration, or projects, feel free to reach out."
+          subtitle="Let's Connect"
+          title="Have an opportunity in mind?"
+          description="I'm always interested in connecting with technology professionals, recruiters, and people working on interesting projects."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Left Column: Direct Contact Info & Channels */}
-          <div className="lg:col-span-5 space-y-6">
-            <Card cornerAccents className="bg-card">
-              <h3 className="text-xl font-bold text-text-primary mb-2">
-                Let&apos;s Connect
-              </h3>
-              <p className="text-sm text-text-secondary leading-relaxed font-light mb-6">
-                I am actively considering opportunities in cybersecurity operations, software engineering, IT infrastructure, and data analytics.
-              </p>
-
-              <div className="space-y-4">
-                <a
-                  href={`mailto:${profileData.email}`}
-                  className="flex items-start gap-3 p-3 rounded-lg bg-background-secondary border border-border hover:border-accent-primary/50 transition-colors group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-accent-primary/10 border border-accent-primary/30 flex items-center justify-center text-accent-secondary shrink-0 group-hover:bg-accent-primary group-hover:text-white transition-all">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-mono text-text-muted">Direct Email</div>
-                    <div className="text-sm font-medium text-text-primary group-hover:text-accent-secondary transition-colors">
-                      {profileData.email}
+        {/* 4 Responsive Contact Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {contactCards.map((card) => {
+            const Icon = card.icon;
+            const CardContent = (
+              <Card
+                key={card.id}
+                cornerAccents
+                className="h-full bg-card border-border hover:border-accent-primary/60 hover:shadow-[0_0_30px_rgba(22,119,255,0.15)] transition-all duration-300 group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-xl bg-accent-primary/10 border border-accent-primary/30 flex items-center justify-center text-accent-secondary group-hover:bg-accent-primary group-hover:text-white group-hover:border-accent-primary transition-all duration-300">
+                      <Icon className="w-6 h-6" />
                     </div>
-                  </div>
-                </a>
-
-                <a
-                  href={profileData.socials.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-3 p-3 rounded-lg bg-background-secondary border border-border hover:border-accent-primary/50 transition-colors group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-accent-primary/10 border border-accent-primary/30 flex items-center justify-center text-accent-secondary shrink-0 group-hover:bg-accent-primary group-hover:text-white transition-all">
-                    <Linkedin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-mono text-text-muted">LinkedIn Network</div>
-                    <div className="text-sm font-medium text-text-primary group-hover:text-accent-secondary transition-colors">
-                      linkedin.com/in/yassa-ashraf
-                    </div>
-                  </div>
-                </a>
-
-                <a
-                  href={profileData.socials.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-3 p-3 rounded-lg bg-background-secondary border border-border hover:border-accent-primary/50 transition-colors group"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-accent-primary/10 border border-accent-primary/30 flex items-center justify-center text-accent-secondary shrink-0 group-hover:bg-accent-primary group-hover:text-white transition-all">
-                    <Github className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-mono text-text-muted">GitHub Repositories</div>
-                    <div className="text-sm font-medium text-text-primary group-hover:text-accent-secondary transition-colors">
-                      github.com/yassaashraf
-                    </div>
-                  </div>
-                </a>
-
-                <div className="flex items-start gap-3 p-3 rounded-lg bg-background-secondary border border-border">
-                  <div className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-text-secondary shrink-0">
-                    <MapPin className="w-4 h-4 text-accent-secondary" />
-                  </div>
-                  <div>
-                    <div className="text-xs font-mono text-text-muted">Location</div>
-                    <div className="text-sm font-medium text-text-primary">
-                      {profileData.location}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Privacy Notice */}
-              <div className="mt-6 pt-4 border-t border-border/60 text-xs text-text-muted leading-relaxed font-light">
-                🔒 Privacy guaranteed: Submitted messages are securely stored in a private Neon PostgreSQL instance and forwarded directly to my inbox. Personal phone numbers are kept private.
-              </div>
-            </Card>
-          </div>
-
-          {/* Right Column: Working Contact Form */}
-          <div className="lg:col-span-7">
-            <Card cornerAccents className="bg-card p-6 sm:p-8">
-              <h3 className="text-xl font-bold text-text-primary mb-2">
-                Send a Direct Message
-              </h3>
-              <p className="text-xs font-mono text-text-muted mb-6">
-                All fields validated with Zod • Rate-limited and spam protected
-              </p>
-
-              {/* Success Notification */}
-              {submitStatus === "success" && (
-                <div className="mb-6 p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/40 text-emerald-300 text-sm flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 shrink-0 text-emerald-400 mt-0.5" />
-                  <div>
-                    <div className="font-semibold text-emerald-200">Message Delivered</div>
-                    <p className="text-xs text-emerald-300/90 mt-0.5">{statusMessage}</p>
-                  </div>
-                </div>
-              )}
-
-              {/* Error Notification */}
-              {submitStatus === "error" && (
-                <div className="mb-6 p-4 rounded-xl bg-rose-950/30 border border-rose-500/40 text-rose-300 text-sm flex items-start gap-3">
-                  <AlertCircle className="w-5 h-5 shrink-0 text-rose-400 mt-0.5" />
-                  <div>
-                    <div className="font-semibold text-rose-200">Submission Alert</div>
-                    <p className="text-xs text-rose-300/90 mt-0.5">{statusMessage}</p>
-                  </div>
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Honeypot field (hidden from real users) */}
-                <div className="hidden" aria-hidden="true">
-                  <label htmlFor="website">Website (Leave empty)</label>
-                  <input
-                    type="text"
-                    id="website"
-                    name="website"
-                    value={formData.website}
-                    onChange={handleChange}
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Name Field */}
-                  <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-xs font-mono uppercase tracking-wider text-text-secondary mb-1.5"
-                    >
-                      Your Name <span className="text-accent-primary">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      placeholder="e.g. Sarah Jenkins"
-                      value={formData.name}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-2.5 rounded-lg bg-background-secondary border text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary/50 transition-all ${
-                        errors.name ? "border-rose-500" : "border-border"
-                      }`}
-                    />
-                    {errors.name && (
-                      <p className="text-xs text-rose-400 mt-1">{errors.name}</p>
+                    {card.href && (
+                      <span className="text-text-muted group-hover:text-accent-secondary transition-colors">
+                        <ArrowUpRight className="w-5 h-5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                      </span>
                     )}
                   </div>
 
-                  {/* Email Field */}
-                  <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-xs font-mono uppercase tracking-wider text-text-secondary mb-1.5"
-                    >
-                      Email Address <span className="text-accent-primary">*</span>
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      placeholder="sarah@example.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className={`w-full px-4 py-2.5 rounded-lg bg-background-secondary border text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary/50 transition-all ${
-                        errors.email ? "border-rose-500" : "border-border"
-                      }`}
-                    />
-                    {errors.email && (
-                      <p className="text-xs text-rose-400 mt-1">{errors.email}</p>
-                    )}
-                  </div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-accent-secondary font-semibold">
+                    {card.label}
+                  </span>
+                  <h3 className="text-base font-semibold text-text-primary mt-1 mb-2 break-all group-hover:text-accent-secondary transition-colors">
+                    {card.value}
+                  </h3>
+                  <p className="text-xs text-text-secondary leading-relaxed font-light">
+                    {card.description}
+                  </p>
                 </div>
 
-                {/* Subject Field */}
-                <div>
-                  <label
-                    htmlFor="subject"
-                    className="block text-xs font-mono uppercase tracking-wider text-text-secondary mb-1.5"
-                  >
-                    Subject <span className="text-accent-primary">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    required
-                    placeholder="e.g. Engineering Opportunity / Project Discussion"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-2.5 rounded-lg bg-background-secondary border text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary/50 transition-all ${
-                      errors.subject ? "border-rose-500" : "border-border"
-                    }`}
-                  />
-                  {errors.subject && (
-                    <p className="text-xs text-rose-400 mt-1">{errors.subject}</p>
+                <div className="mt-6 pt-4 border-t border-border/50 flex items-center text-xs font-mono text-text-muted group-hover:text-text-primary transition-colors">
+                  <span>{card.ctaText}</span>
+                  {card.isExternal && (
+                    <ExternalLink className="w-3 h-3 ml-1.5 opacity-60" />
                   )}
                 </div>
+              </Card>
+            );
 
-                {/* Message Field */}
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-xs font-mono uppercase tracking-wider text-text-secondary mb-1.5"
-                  >
-                    Message <span className="text-accent-primary">*</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    required
-                    rows={5}
-                    placeholder="Provide details about your role, inquiry, or project..."
-                    value={formData.message}
-                    onChange={handleChange}
-                    className={`w-full px-4 py-3 rounded-lg bg-background-secondary border text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-accent-primary/50 transition-all resize-none ${
-                      errors.message ? "border-rose-500" : "border-border"
-                    }`}
-                  />
-                  {errors.message && (
-                    <p className="text-xs text-rose-400 mt-1">{errors.message}</p>
-                  )}
-                </div>
+            if (card.href) {
+              return (
+                <a
+                  key={card.id}
+                  href={card.href}
+                  target={card.isExternal ? "_blank" : undefined}
+                  rel={card.isExternal ? "noopener noreferrer" : undefined}
+                  aria-label={`${card.label}: ${card.value}`}
+                  className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-primary rounded-xl"
+                >
+                  {CardContent}
+                </a>
+              );
+            }
 
-                {/* Submit Button */}
-                <div className="pt-2 flex items-center justify-between flex-wrap gap-4">
-                  <div className="text-[11px] font-mono text-text-muted flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-accent-secondary" />
-                    <span>Average reply within 24 hours</span>
-                  </div>
+            return (
+              <div key={card.id} className="h-full">
+                {CardContent}
+              </div>
+            );
+          })}
+        </div>
 
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="md"
-                    isLoading={isLoading}
-                    rightIcon={<Send className="w-4 h-4" />}
-                  >
-                    Transmit Message
-                  </Button>
-                </div>
-              </form>
-            </Card>
+        {/* Final Professional Call to Action Banner */}
+        <div className="relative rounded-2xl bg-gradient-to-r from-card via-background-secondary to-card border border-border/80 p-8 sm:p-12 text-center overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-accent-primary/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent-secondary/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 max-w-2xl mx-auto space-y-6">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-primary/10 border border-accent-primary/30 text-xs font-mono text-accent-secondary">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Available for Technical Roles & Collaborations</span>
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-text-primary tracking-tight">
+              Let&apos;s build something meaningful together.
+            </h3>
+
+            <p className="text-sm sm:text-base text-text-secondary leading-relaxed font-light">
+              Whether you are looking for a dedicated engineer for cybersecurity operations, full-stack software development, IT systems, or data analytics — my inbox is always open.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+              <a href={`mailto:${profileData.email}`}>
+                <Button variant="primary" size="lg" className="group">
+                  <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                  <span>Email Me Directly</span>
+                </Button>
+              </a>
+              <a
+                href={profileData.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="secondary" size="lg">
+                  <Linkedin className="w-4 h-4 mr-2 text-accent-secondary" />
+                  <span>Connect on LinkedIn</span>
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </div>

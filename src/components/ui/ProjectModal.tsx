@@ -88,7 +88,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
             src={allImages[activeImageIndex]}
             alt={`${project.title} preview ${activeImageIndex + 1}`}
             fill
-            className="object-cover transition-all duration-300"
+            className="object-contain transition-all duration-300 bg-background/60"
             sizes="(max-width: 1024px) 100vw, 850px"
           />
 
@@ -202,3 +202,4 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
     </div>
   );
 }
+

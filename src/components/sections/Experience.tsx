@@ -5,7 +5,7 @@ import { experiences } from "@/data/experience";
 import { SectionHeading } from "../ui/SectionHeading";
 import { Card } from "../ui/Card";
 import { Badge } from "../ui/Badge";
-import { Briefcase, Calendar, MapPin, CheckCircle, Clock, AlertCircle } from "lucide-react";
+import { Calendar, MapPin, CheckCircle, GraduationCap } from "lucide-react";
 
 export function Experience() {
   return (
@@ -19,38 +19,30 @@ export function Experience() {
         />
 
         <div className="relative pl-6 sm:pl-8 border-l-2 border-border/80 ml-2 sm:ml-4 space-y-12">
-          {experiences.map((exp, index) => {
+          {experiences.map((exp) => {
             return (
               <div key={exp.id} className="relative group">
                 {/* Timeline node */}
                 <div
                   className={`absolute -left-[31px] sm:-left-[39px] top-1.5 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
-                    exp.isPending
-                      ? "border-amber-500/60 bg-card text-amber-400"
-                      : exp.isCurrent
+                    exp.isCurrent
                       ? "border-accent-primary bg-accent-primary/20 text-accent-secondary shadow-electric-sm"
                       : "border-border bg-card text-text-muted"
                   }`}
                 >
                   <div
                     className={`w-2 h-2 rounded-full ${
-                      exp.isPending
-                        ? "bg-amber-400"
-                        : exp.isCurrent
+                      exp.isCurrent
                         ? "bg-accent-primary animate-ping"
-                        : "bg-text-muted"
+                        : "bg-accent-primary/60"
                     }`}
                   />
                 </div>
 
                 {/* Experience Card */}
                 <Card
-                  hoverEffect={!exp.isPending}
-                  className={`relative ${
-                    exp.isPending
-                      ? "border-dashed border-amber-500/30 bg-card/40"
-                      : "bg-card/75"
-                  }`}
+                  hoverEffect
+                  className="relative bg-card/75 border-border hover:border-accent-primary/50 transition-all duration-300"
                 >
                   {/* Top Meta Header */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-4 border-b border-border/60">
@@ -60,7 +52,7 @@ export function Experience() {
                           {exp.role}
                         </h3>
                         <Badge
-                          variant={exp.isPending ? "warning" : exp.isCurrent ? "accent" : "default"}
+                          variant={exp.isCurrent ? "accent" : "default"}
                           size="sm"
                         >
                           {exp.type}
@@ -83,20 +75,35 @@ export function Experience() {
                     </div>
                   </div>
 
-                  {/* Pending Notice (for Cloudzlab Salesforce) */}
-                  {exp.isPending && (
-                    <div className="mb-4 p-3 rounded-lg bg-amber-950/20 border border-amber-800/40 flex items-center gap-2.5 text-xs text-amber-300">
-                      <AlertCircle className="w-4 h-4 shrink-0 text-amber-400" />
-                      <span>
-                        {exp.statusText}: Verified responsibilities and certification details will be updated once official documentation is completed.
-                      </span>
+                  {/* Summary Description if present */}
+                  {exp.description && (
+                    <p className="text-sm text-text-primary/90 leading-relaxed font-light mb-5 bg-background-secondary/60 p-3.5 rounded-lg border border-border/60">
+                      {exp.description}
+                    </p>
+                  )}
+
+                  {/* Training Areas (for Salesforce Internship) */}
+                  {exp.trainingAreas && exp.trainingAreas.length > 0 && (
+                    <div className="mb-5 p-4 rounded-lg bg-background-secondary/40 border border-border/60">
+                      <div className="flex items-center gap-2 mb-2.5 text-xs font-mono uppercase tracking-wider text-accent-secondary font-semibold">
+                        <GraduationCap className="w-4 h-4 text-accent-primary" />
+                        <span>Training Areas</span>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-text-secondary">
+                        {exp.trainingAreas.map((area, aIdx) => (
+                          <div key={aIdx} className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-accent-secondary shrink-0" />
+                            <span>{area}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   )}
 
                   {/* Responsibilities list */}
                   <div className="space-y-2 mb-6">
                     <h4 className="text-xs font-mono uppercase tracking-wider text-text-muted">
-                      Key Contributions & Responsibilities:
+                      Key Contributions & Learnings:
                     </h4>
                     <ul className="space-y-2 text-sm text-text-secondary leading-relaxed font-light">
                       {exp.responsibilities.map((resp, rIdx) => (
@@ -113,7 +120,7 @@ export function Experience() {
                     {exp.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-background-secondary border border-border text-text-secondary"
+                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-background-secondary border border-border text-text-secondary hover:text-accent-secondary hover:border-accent-primary/40 transition-colors"
                       >
                         {skill}
                       </span>
