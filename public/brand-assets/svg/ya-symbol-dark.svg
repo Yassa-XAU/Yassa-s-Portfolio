@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-120 -120 2052 1240" width="1812" height="1000">
+  <rect x="-120" y="-120" width="2052" height="1240" fill="#080D16"/>
+  <g id="ya-symbol">
+    <path id="letter-y" fill="#1677FF" d="M 100,100 L 275,100 L 544,490 L 812,100 L 987,100 L 625,620 L 625,900 L 462,900 L 462,620 Z"/>
+    <path id="letter-a" fill="#54A6FF" fill-rule="evenodd" d="M 1087,100 L 1275,100 L 1712,900 L 1562,900 L 1416,670 L 944,670 L 787,900 L 625,900 Z M 1181,260 L 1014,570 L 1348,570 Z"/>
+  </g>
+</svg>

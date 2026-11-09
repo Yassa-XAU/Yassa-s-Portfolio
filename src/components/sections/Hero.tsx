@@ -185,8 +185,11 @@ export function Hero() {
                         Sadat Academy • Cyber Security
                       </div>
                     </div>
-                    <div className="w-8 h-8 rounded-lg bg-accent-primary/20 border border-accent-primary/40 flex items-center justify-center text-accent-primary">
-                      <Shield className="w-4 h-4" />
+                    <div className="w-8 h-8 rounded-lg bg-accent-primary/20 border border-accent-primary/40 flex items-center justify-center p-1.5">
+                      <svg className="w-full h-full" viewBox="0 0 1812 1000" fill="none">
+                        <path fill="#1677FF" d="M 100,100 L 275,100 L 544,490 L 812,100 L 987,100 L 625,620 L 625,900 L 462,900 L 462,620 Z"/>
+                        <path fill="#54A6FF" fillRule="evenodd" d="M 1087,100 L 1275,100 L 1712,900 L 1562,900 L 1416,670 L 944,670 L 787,900 L 625,900 Z M 1181,260 L 1014,570 L 1348,570 Z"/>
+                      </svg>
                     </div>
                   </div>
                 </div>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 440" width="1600" height="440">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@600&amp;display=swap');
+      .cv-name {
+        font-family: 'Orbitron', -apple-system, sans-serif;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+      }
+      .cv-sub {
+        font-family: 'Inter', sans-serif;
+        font-weight: 500;
+        color: #4A5568;
+      }
+      .cv-contact {
+        font-family: 'Inter', monospace;
+        font-size: 26px;
+        font-weight: 500;
+        fill: #2D3748;
+      }
+    </style>
+  </defs>
+  <!-- Clean Crisp White Background -->
+  <rect width="1600" height="440" fill="#FFFFFF"/>
+  <rect x="0" y="438" width="1600" height="2" fill="#E2E8F0"/>
+
+  <!-- Left: YA Symbol + Name + Subtitle -->
+  <g transform="translate(70, 70)">
+    <!-- Symbol (scaled 0.16) -->
+    <g transform="translate(0, 5) scale(0.16)">
+      <path fill="#1677FF" d="M 100,100 L 275,100 L 544,490 L 812,100 L 987,100 L 625,620 L 625,900 L 462,900 L 462,620 Z"/>
+      <path fill="#54A6FF" fill-rule="evenodd" d="M 1087,100 L 1275,100 L 1712,900 L 1562,900 L 1416,670 L 944,670 L 787,900 L 625,900 Z M 1181,260 L 1014,570 L 1348,570 Z"/>
+    </g>
+    <!-- Wordmark -->
+    <text x="330" y="98" class="cv-name" fill="#0A0F1D" font-size="64">YASSA ASHRAF</text>
+    <text x="330" y="148" class="cv-sub" font-size="26">Cybersecurity • Software Development • IT Operations</text>
+  </g>
+
+  <!-- Right: Corrected Contact Items with Lucide-style Vector Icons -->
+  <g transform="translate(1120, 85)">
+    <!-- Email Item -->
+    <g transform="translate(0, 0)">
+      <!-- Mail Icon -->
+      <path fill="#1677FF" d="M 0,4 C 0,1.8 1.8,0 4,0 L 28,0 C 30.2,0 32,1.8 32,4 L 32,24 C 32,26.2 30.2,28 28,28 L 4,28 C 1.8,28 0,26.2 0,24 Z M 3.5,4 L 16,14.5 L 28.5,4 Z M 3.5,24 L 28.5,24 L 28.5,7.5 L 16,18 L 3.5,7.5 Z"/>
+      <text x="48" y="22" class="cv-contact">yassa.ashraf7890@gmail.com</text>
+    </g>
+
+    <!-- GitHub Item -->
+    <g transform="translate(0, 50)">
+      <!-- GitHub Icon -->
+      <path fill="#1677FF" d="M 16,0 C 7.2,0 0,7.2 0,16 C 0,23.1 4.6,29.1 11,31.2 C 11.8,31.3 12.1,30.9 12.1,30.4 C 12.1,30 12.1,28.6 12.1,26.8 C 7.6,27.8 6.7,24.6 6.7,24.6 C 6,22.8 5,22.3 5,22.3 C 3.5,21.3 5.1,21.3 5.1,21.3 C 6.8,21.4 7.7,23.1 7.7,23.1 C 9.2,25.6 11.6,24.9 12.5,24.5 C 12.7,23.4 13.1,22.7 13.6,22.3 C 10,21.9 6.2,20.5 6.2,14.3 C 6.2,12.5 6.8,11.1 7.8,10 C 7.6,9.5 7.1,7.9 8,5.7 C 8,5.7 9.4,5.3 12.5,7.4 C 13.8,7 15.2,6.8 16.6,6.8 C 18,6.8 19.4,7 20.7,7.4 C 23.8,5.3 25.2,5.7 25.2,5.7 C 26.1,7.9 25.6,9.5 25.4,10 C 26.4,11.1 27,12.5 27,14.3 C 27,20.5 23.2,21.9 19.6,22.3 C 20.2,22.8 20.7,23.8 20.7,25.3 C 20.7,27.5 20.7,29.3 20.7,29.8 C 20.7,30.2 21,30.7 21.8,30.5 C 28.2,28.4 32.8,22.4 32.8,15.3 C 32,6.9 24.8,0 16,0 Z"/>
+      <text x="48" y="23" class="cv-contact">github.com/yassaashraf</text>
+    </g>
+
+    <!-- LinkedIn Item -->
+    <g transform="translate(0, 100)">
+      <!-- LinkedIn Icon -->
+      <path fill="#1677FF" d="M 4,0 C 1.8,0 0,1.8 0,4 L 0,28 C 0,30.2 1.8,32 4,32 L 28,32 C 30.2,32 32,30.2 32,28 L 32,4 C 32,1.8 30.2,0 28,0 Z M 9.5,27 L 4.8,27 L 4.8,12 L 9.5,12 Z M 7.2,10 C 5.6,10 4.4,8.8 4.4,7.2 C 4.4,5.6 5.6,4.4 7.2,4.4 C 8.8,4.4 10,5.6 10,7.2 C 10,8.8 8.8,10 7.2,10 Z M 27.2,27 L 22.5,27 L 22.5,19.6 C 22.5,17.8 22.5,15.5 20,15.5 C 17.5,15.5 17.1,17.4 17.1,19.5 L 17.1,27 L 12.4,27 L 12.4,12 L 16.9,12 L 16.9,14 L 17,14 C 17.6,12.8 19.2,11.5 21.5,11.5 C 26.3,11.5 27.2,14.7 27.2,18.8 Z"/>
+      <text x="48" y="24" class="cv-contact">linkedin.com/in/yassa-ashraf</text>
+    </g>
+  </g>
+</svg>

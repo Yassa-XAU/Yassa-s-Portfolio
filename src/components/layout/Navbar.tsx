@@ -51,8 +51,11 @@ export function Navbar() {
             href="#"
             className="flex items-center gap-2.5 group focus:outline-none"
           >
-            <div className="relative w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center text-accent-secondary group-hover:border-accent-primary group-hover:text-accent-primary transition-all duration-200 shadow-electric-sm">
-              <Shield className="w-5 h-5 text-accent-primary" />
+            <div className="relative w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center p-1.5 group-hover:border-accent-primary transition-all duration-200 shadow-electric-sm">
+              <svg className="w-full h-full" viewBox="0 0 1812 1000" fill="none">
+                <path fill="#1677FF" d="M 100,100 L 275,100 L 544,490 L 812,100 L 987,100 L 625,620 L 625,900 L 462,900 L 462,620 Z"/>
+                <path fill="#54A6FF" fillRule="evenodd" d="M 1087,100 L 1275,100 L 1712,900 L 1562,900 L 1416,670 L 944,670 L 787,900 L 625,900 Z M 1181,260 L 1014,570 L 1348,570 Z"/>
+              </svg>
               <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-accent-primary animate-pulse" />
             </div>
             <div className="flex flex-col">

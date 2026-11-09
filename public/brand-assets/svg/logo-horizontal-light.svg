@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 400" width="1600" height="400">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&amp;display=swap');
+      .wordmark {
+        font-family: 'Orbitron', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+    </style>
+  </defs>
+  <rect width="1600" height="400" fill="#FFFFFF"/>
+  <!-- Standalone Symbol -->
+  <g id="ya-symbol" transform="translate(80, 80) scale(0.24)">
+    <path fill="#080D16" d="M 100,100 L 275,100 L 544,490 L 812,100 L 987,100 L 625,620 L 625,900 L 462,900 L 462,620 Z"/>
+    <path fill="#1677FF" fill-rule="evenodd" d="M 1087,100 L 1275,100 L 1712,900 L 1562,900 L 1416,670 L 944,670 L 787,900 L 625,900 Z M 1181,260 L 1014,570 L 1348,570 Z"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="590" y="248" class="wordmark" fill="#080D16" font-size="108">YASSA ASHRAF</text>
+</svg>

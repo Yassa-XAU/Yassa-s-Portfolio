@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800;900&amp;family=Space+Grotesk:wght@600&amp;display=swap');
+      .title {
+        font-family: 'Orbitron', 'Space Grotesk', -apple-system, sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        text-anchor: middle;
+      }
+      .subtitle {
+        font-family: 'Space Grotesk', 'JetBrains Mono', -apple-system, monospace;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.28em;
+        text-anchor: middle;
+      }
+    </style>
+  </defs>
+  
+  <!-- Centered Symbol (Scale 0.38) -->
+  <!-- 1812 * 0.38 = 688.5 -> x = (1200 - 688.5)/2 = 255.75 -->
+  <g id="ya-symbol" transform="translate(256, 120) scale(0.38)">
+    <path fill="#FFFFFF" d="M 100,100 L 275,100 L 544,490 L 812,100 L 987,100 L 625,620 L 625,900 L 462,900 L 462,620 Z"/>
+    <path fill="#FFFFFF" fill-rule="evenodd" d="M 1087,100 L 1275,100 L 1712,900 L 1562,900 L 1416,670 L 944,670 L 787,900 L 625,900 Z M 1181,260 L 1014,570 L 1348,570 Z"/>
+  </g>
+  <!-- Name -->
+  <text x="600" y="620" class="title" fill="#FFFFFF" font-size="76">YASSA ASHRAF</text>
+  <!-- Subtitle -->
+  <text x="600" y="695" class="subtitle" fill="#FFFFFF" font-size="28">CYBERSECURITY • SOFTWARE DEVELOPMENT</text>
+</svg>
